@@ -1,0 +1,1055 @@
+/* =============================================================
+   Zivra Profile Dashboard Page Stylesheet
+   Inherits base design variables and styles from main.css
+   ============================================================= */
+
+/* Page main wrapper layout offset */
+.profile-page-container {
+  padding-top: 110px; /* Space for the fixed nav header */
+  padding-bottom: 8rem;
+  background-color: var(--color-bg-soft);
+  min-height: calc(100vh - 350px);
+  transition: var(--transition-smooth);
+}
+#profile-picture{
+    display:none;
+}
+.preview-input-img{
+height: 50px;
+  width:50px;
+  overflow: hidden;
+}
+.input-profile-preview{
+  width: 100%;
+}
+/* Nav Links Specific Dashboard Style Compatibility */
+.nav-links-wrapper {
+  margin-left: auto;
+  margin-right: 2rem;
+}
+
+@media (max-width: 992px) {
+  .nav-links-wrapper {
+    display: none; /* Hide navigation links on small viewports, rely on dropdowns */
+  }
+}
+
+.nav-links-dashboard {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.nav-dash-link {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  padding: 0.5rem 0.25rem;
+  position: relative;
+  transition: var(--transition-fast);
+}
+
+.nav-dash-link:hover {
+  color: var(--color-text-main);
+}
+
+/* Dropdown Menu Toggles Active styles (JS Toggled) */
+.notification-dropdown.active,
+.profile-dropdown.active {
+  display: block !important;
+  animation: dropdownFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes dropdownFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =============================================================
+   1. Premium Profile Header Section
+   ============================================================= */
+.profile-header-card {
+  padding: 0 !important;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  background: var(--color-bg-pure);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.profile-cover-banner {
+  height: 180px;
+  background: linear-gradient(135deg, #FF4F9A 0%, #FFD6E8 100%);
+  position: relative;
+}
+
+.profile-header-info {
+  display: flex;
+  align-items: flex-end;
+  padding: 0 3rem 2.5rem 3rem;
+  margin-top: -60px; /* Offset to overlap the banner */
+  position: relative;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .profile-header-info {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: -80px;
+    padding: 0 2rem 2rem 2rem;
+    gap: 1.5rem;
+  }
+}
+
+/* Avatar Photo */
+.profile-avatar-container {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 6px solid var(--color-bg-pure);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  flex-shrink: 0;
+  background: var(--color-bg-pure);
+}
+
+.profile-avatar-large {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+.profile-img{
+  display: flex;
+  align-items: center;
+  gap:15px;
+}
+.btn-cu{
+  width:100%
+}
+.btn-change-avatar-trigger {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--color-gradient-primary);
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(255, 79, 154, 0.3);
+  transition: var(--transition-smooth);
+}
+
+.btn-change-avatar-trigger:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(255, 79, 154, 0.45);
+}
+
+/* Header User Details */
+.profile-header-details {
+  flex-grow: 1;
+}
+
+.profile-name-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .profile-name-row {
+    justify-content: center;
+  }
+}
+
+.profile-user-fullname {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  color: var(--color-text-main);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.tier-badge {
+  background: var(--color-secondary-light);
+  color: var(--color-primary);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.profile-user-username {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+  font-weight: 500;
+}
+
+.profile-metadata-chips {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .profile-metadata-chips {
+    justify-content: center;
+  }
+}
+
+.meta-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+}
+
+.meta-chip svg {
+  color: var(--color-text-light);
+}
+
+/* Edit & Completion Action block */
+.profile-header-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1.25rem;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .profile-header-actions {
+    align-items: center;
+    width: 100%;
+  }
+}
+
+.btn-edit-profile {
+  font-size: 0.88rem;
+  padding: 0.8rem 1.6rem;
+  font-weight: 600;
+}
+
+/* Completion progress circle styling */
+.progress-ring-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.progress-ring-circle {
+  width: 52px;
+  height: 52px;
+}
+
+.circular-chart-profile {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.circle-bg-profile {
+  fill: none;
+  stroke: rgba(0, 0, 0, 0.03);
+  stroke-width: 3.2;
+}
+
+.circle-profile {
+  fill: none;
+  stroke: var(--color-primary);
+  stroke-width: 3.2;
+  stroke-linecap: round;
+}
+
+.percentage-profile {
+  font-family: var(--font-body);
+  fill: var(--color-text-main);
+  font-size: 9.5px;
+  text-anchor: middle;
+  font-weight: 700;
+}
+
+.progress-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+/* =============================================================
+   2. Main Layout Split Workspace Columns
+   ============================================================= */
+.profile-workspace-grid {
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+@media (max-width: 992px) {
+  .profile-workspace-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =============================================================
+   3. Left Column Sidebar
+   ============================================================= */
+.profile-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sidebar-card-premium {
+  padding: 1.8rem !important;
+  background: var(--color-bg-pure);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.sidebar-card-title {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+  margin-bottom: 1.25rem;
+  border-left: 3px solid var(--color-primary);
+  padding-left: 0.75rem;
+}
+
+/* Activity Statistics Grid */
+.activity-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.stat-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-soft);
+  border-radius: 16px;
+  padding: 0.85rem 0.5rem;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.02);
+  transition: var(--transition-fast);
+}
+
+.stat-box:hover {
+  transform: translateY(-2px);
+  background: var(--color-bg-pure);
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 12px rgba(255, 79, 154, 0.05);
+}
+
+.stat-number {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+}
+
+.stat-label {
+  font-size: 0.68rem;
+  color: var(--color-text-light);
+  font-weight: 600;
+  margin-top: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Quick Access Shortcuts List */
+.quick-access-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.qa-shortcut-item {
+  display: flex;
+  align-items: center;
+  background: var(--color-bg-soft);
+  border: 1px solid rgba(0, 0, 0, 0.02);
+  border-radius: 14px;
+  padding: 0.85rem 1.2rem;
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-smooth);
+}
+
+.qa-shortcut-item:hover {
+  background: var(--color-bg-pure);
+  border-color: var(--color-primary);
+  transform: translateX(4px);
+  box-shadow: 0 4px 15px rgba(255, 79, 154, 0.05);
+}
+
+.shortcut-icon {
+  font-size: 1.2rem;
+  margin-right: 0.85rem;
+}
+
+.shortcut-text {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--color-text-main);
+  flex-grow: 1;
+}
+
+.shortcut-arrow {
+  font-size: 1rem;
+  color: var(--color-text-light);
+  transition: var(--transition-fast);
+}
+
+.qa-shortcut-item:hover .shortcut-arrow {
+  color: var(--color-primary);
+  transform: translateX(2px);
+}
+
+/* =============================================================
+   4. Right Column Form Panels
+   ============================================================= */
+.profile-forms-area {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-forms-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.form-card {
+  padding: 2.5rem 3rem !important;
+  background: var(--color-bg-pure);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+@media (max-width: 576px) {
+  .form-card {
+    padding: 1.8rem !important;
+  }
+}
+
+.card-header-with-icon {
+  display: flex;
+  gap: 1.25rem;
+  margin-bottom: 2.2rem;
+  align-items: center;
+}
+
+.card-icon-box {
+  font-size: 2rem;
+  width: 56px;
+  height: 0px;
+  border-radius: 16px;
+  background: var(--color-secondary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.card-header-text h2 {
+  font-size: 1.45rem;
+  color: var(--color-text-main);
+  font-weight: 700;
+}
+
+.card-header-text p {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  margin-top: 1px;
+}
+
+/* Form inputs & grids */
+.form-grid-columns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 576px) {
+  .form-grid-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-input-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+}
+
+.form-input-field,
+.form-select-field {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 0.85rem 1rem;
+  font-size: 0.88rem;
+  outline: none;
+  background: var(--color-bg-pure);
+  color: var(--color-text-main);
+  transition: var(--transition-smooth);
+}
+
+.form-input-field:focus,
+.form-select-field:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(255, 79, 154, 0.08);
+}
+
+.form-select-field {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23666666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1.25rem center;
+  background-size: 16px;
+  padding-right: 2.5rem;
+}
+
+/* Read Only states styling */
+.field-disabled {
+  background: var(--color-bg-soft);
+  color: var(--color-text-muted);
+  border-color: rgba(0, 0, 0, 0.04);
+  cursor: not-allowed;
+}
+
+.field-disabled:focus {
+  border-color: rgba(0, 0, 0, 0.04);
+  box-shadow: none;
+}
+
+.field-hint-text {
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+  margin-top: 2px;
+}
+
+.card-submit-row {
+  margin-top: 2rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.04);
+  padding-top: 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* =============================================================
+   5. Selectable Chips & Swatches Systems
+   ============================================================= */
+.preference-chips-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+/* Hide checkbox/radio inputs */
+.chip-checkbox-input,
+.chip-radio-input {
+  display: none;
+}
+
+/* Chip Label Styling */
+.chip-checkbox-label,
+.chip-radio-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: var(--color-bg-pure);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  user-select: none;
+}
+
+.chip-checkbox-label:hover,
+.chip-radio-label:hover {
+  border-color: var(--color-primary);
+  background: var(--color-secondary-light);
+  color: var(--color-primary);
+}
+
+/* Selected state checked chip highlights */
+.chip-checkbox-input:checked + .chip-checkbox-label,
+.chip-radio-input:checked + .chip-radio-label {
+  background: var(--color-gradient-primary);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(255, 79, 154, 0.2);
+}
+
+/* Color Swatches wrapper */
+.color-swatch-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+.color-swatch-input {
+  display: none;
+}
+
+.color-swatch-label {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  border: 2px solid var(--color-bg-pure);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+  transition: var(--transition-smooth);
+}
+
+.color-swatch-label:hover {
+  transform: scale(1.12);
+}
+
+.color-swatch-input:checked + .color-swatch-label {
+  box-shadow: 0 0 0 2px var(--color-primary);
+  transform: scale(1.12);
+}
+
+/* Tick marker overlay */
+.color-swatch-input:checked + .color-swatch-label::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 9px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: translate(-50%, -60%) rotate(45deg);
+}
+
+/* Light color swatches checked tick overlay black styling */
+.label-light-color::after {
+  border-color: var(--color-text-main) !important;
+}
+
+/* =============================================================
+   6. Account Settings Specific List Layout
+   ============================================================= */
+.settings-actions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.settings-row-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+  padding-bottom: 1.25rem;
+  gap: 2rem;
+}
+
+.settings-row-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.settings-meta h4 {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+}
+
+.settings-meta p {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-top: 1px;
+  line-height: 1.4;
+}
+
+/* Toggle Slider Component */
+.toggle-switch-wrapper {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.toggle-checkbox {
+  display: none;
+}
+
+.toggle-track {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  position: relative;
+  transition: var(--transition-fast);
+}
+
+.toggle-track::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.toggle-checkbox:checked + .toggle-track {
+  background: var(--color-primary);
+}
+
+.toggle-checkbox:checked + .toggle-track::before {
+  transform: translateX(20px);
+}
+
+/* =============================================================
+   7. Fixed / Sticky Bottom Actions Bar
+   ============================================================= */
+.profile-bottom-action-bar {
+  position: sticky;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem 3rem;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.05);
+  margin-top: 3rem;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+}
+
+.bar-buttons-row {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  max-width: 600px;
+  width: 100%;
+}
+
+.bar-buttons-row button,
+.bar-buttons-row a {
+  flex: 1;
+  text-align: center;
+}
+
+.btn-bar-submit {
+  box-shadow: 0 4px 15px rgba(255, 79, 154, 0.3);
+}
+
+.btn-bar-cancel {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2.2rem;
+  border-radius: var(--radius-pill);
+}
+
+/* =============================================================
+   8. Premium "Change Profile Picture" modal UI
+   ============================================================= */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  z-index: 2000;
+  display: flex; /* Centering helper modal */
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  animation: backdropFade 0.4s ease forwards;
+}
+
+@keyframes backdropFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-card {
+  width: 100%;
+  max-width: 500px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: var(--radius-card);
+  padding: 3rem;
+  position: relative;
+  box-shadow: var(--shadow-hover);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  animation: modalScaleUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes modalScaleUp {
+  from { opacity: 0; transform: scale(0.95) translateY(15px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.btn-close-modal {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  padding: 0.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-fast);
+}
+
+.btn-close-modal:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--color-text-main);
+}
+
+.modal-header-section {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.modal-headline {
+  font-family: var(--font-body);
+  font-size: 1.35rem;
+  color: var(--color-text-main);
+  font-weight: 700;
+}
+
+.modal-subheading {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+/* Drag Zone Graphics */
+.drag-drop-upload-zone {
+  border: 2px dashed rgba(255, 79, 154, 0.3);
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 16px;
+  padding: 2.2rem 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  margin-bottom: 2rem;
+}
+
+.drag-drop-upload-zone:hover {
+  border-color: var(--color-primary);
+  background: var(--color-secondary-light);
+}
+
+.upload-zone-graphics {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.upload-zone-graphics svg {
+  color: var(--color-primary);
+  margin-bottom: 0.85rem;
+}
+
+.drag-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+  margin-bottom: 2px;
+}
+
+.drag-details {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+/* Selected Previews circular frames */
+.upload-preview-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.preview-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.75rem;
+}
+
+.preview-circle-frame {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 4px solid var(--color-bg-pure);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  animation: modalScaleUp 0.3s ease;
+}
+
+.preview-circle-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Modal layout buttons */
+.modal-buttons-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.modal-secondary-buttons-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.modal-secondary-buttons-row button {
+  flex: 1;
+  font-size: 0.8rem;
+  padding: 0.65rem 0.5rem;
+}
+
+.btn-danger {
+  color: #FF3B30 !important;
+  border-color: rgba(255, 59, 48, 0.15) !important;
+}
+
+.btn-danger:hover {
+  background: rgba(255, 59, 48, 0.05) !important;
+  border-color: rgba(255, 59, 48, 0.3) !important;
+}
+
+/* =============================================================
+   9. Dark Mode Theme Overrides (UI Theme class)
+   ============================================================= */
+body.dark-mode-theme {
+  background-color: #121212 !important;
+  color: #F8F9FA !important;
+}
+
+body.dark-mode-theme .profile-page-container {
+  background-color: #121212 !important;
+}
+
+body.dark-mode-theme .card-premium,
+body.dark-mode-theme .sidebar-card-premium,
+body.dark-mode-theme .form-card,
+body.dark-mode-theme .stat-box {
+  background: #1A1A1A !important;
+  border-color: rgba(255, 255, 255, 0.03) !important;
+}
+
+body.dark-mode-theme .profile-user-fullname,
+body.dark-mode-theme h2,
+body.dark-mode-theme h3,
+body.dark-mode-theme h4,
+body.dark-mode-theme .form-input-label,
+body.dark-mode-theme .stat-number,
+body.dark-mode-theme .shortcut-text {
+  color: #FFFFFF !important;
+}
+
+body.dark-mode-theme .profile-user-username,
+body.dark-mode-theme .meta-chip,
+body.dark-mode-theme .card-header-text p,
+body.dark-mode-theme .stat-label,
+body.dark-mode-theme .settings-meta p {
+  color: #A0A0A0 !important;
+}
+
+body.dark-mode-theme .form-input-field,
+body.dark-mode-theme .form-select-field {
+  background: #242424 !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  color: #FFFFFF !important;
+}
+
+body.dark-mode-theme .field-disabled {
+  background: #151515 !important;
+  color: #666666 !important;
+}
+
+body.dark-mode-theme .qa-shortcut-item {
+  background: #242424 !important;
+  border-color: rgba(255, 255, 255, 0.02) !important;
+}
+
+body.dark-mode-theme .qa-shortcut-item:hover {
+  background: #2C2C2C !important;
+  border-color: var(--color-primary) !important;
+}
+
+body.dark-mode-theme .chip-checkbox-label,
+body.dark-mode-theme .chip-radio-label {
+  background: #242424 !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  color: #A0A0A0 !important;
+}
+
+body.dark-mode-theme .chip-checkbox-label:hover,
+body.dark-mode-theme .chip-radio-label:hover {
+  color: var(--color-primary) !important;
+  background: rgba(255, 79, 154, 0.1) !important;
+}
+
+body.dark-mode-theme .profile-bottom-action-bar,
+body.dark-mode-theme .modal-card {
+  background: rgba(26, 26, 26, 0.85) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+body.dark-mode-theme .btn-secondary {
+  background: #242424 !important;
+  color: #FFFFFF !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+body.dark-mode-theme .btn-secondary:hover {
+  background: #2C2C2C !important;
+}

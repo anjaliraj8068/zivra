@@ -1,0 +1,414 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zivra – Your Premium AI Fashion & Grooming Assistant</title>
+  <meta name="description" content="Discover your perfect style with Zivra. Upload your photo and let AI become your personal fashion stylist for outfits, hairstyles, grooming, and fashion trends.">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+
+  <!-- Header & Navigation -->
+  <header class="header-main glass">
+    <div class="container nav-main">
+      <a href="#" class="logo-container" aria-label="Zivra Home">
+        <span class="logo-text">Zivra</span>
+        <!-- <span class="logo-tagline">Your AI Fashion Stylist</span> -->
+      </a>
+      
+      <div class="nav-actions">
+        <a href="{% url 'login' %}" class="btn-login">Login</a>
+        <a href="{% url 'register' %}" class="btn-primary btn-register">Register</a>
+       
+      </div>
+      
+      <button class="mobile-toggle" aria-label="Toggle Navigation Menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <main>
+    
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 5px;">
+              <polygon points="12 2 2 22 22 22"></polygon>
+            </svg>
+            Personal AI Fashion Stylist
+          </div>
+          <h1 class="hero-title">Discover Your Perfect Style <span>With AI</span></h1>
+          <p class="hero-subtitle">
+            Upload your photo and let AI become your personal fashion stylist for outfits, hairstyles, grooming, accessories, and fashion trends.
+          </p>
+          <div class="hero-buttons">
+            <a href="{% url 'register' %}" class="btn-primary">Get Started</a>
+          </div>
+        </div>
+        
+        <div class="hero-image-wrapper">
+          <div class="hero-image-container">
+            <img src="../../static/images/hero_model.jpg" alt="Premium AI Fashion Model" class="hero-image">
+            
+            <!-- Glassmorphism Floating Tag -->
+            <div class="hero-tag glass">
+              <div class="hero-tag-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+              </div>
+              <div class="hero-tag-text">
+                <h4>Daily Style Score</h4>
+                <p>95/100 · Elite Fit</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Overview Section -->
+    <section id="features" class="features-section section-padding">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Capabilities</span>
+          <h2 class="section-title">Elevate Your Everyday Look</h2>
+          <p class="section-subtitle">Zivra harnesses luxury styling intelligence to cover every vertical of your fashion and grooming life.</p>
+        </div>
+        
+        <div class="features-grid">
+          <!-- Feature 1: AI Outfit Review -->
+          <article class="feature-card card-premium">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                <circle cx="12" cy="13" r="4"></circle>
+              </svg>
+            </div>
+            <h3>AI Outfit Review</h3>
+            <p>Upload a photo of your outfit to get instant feedback on color harmony, accessories match, and silhouette correctness with a comprehensive style score.</p>
+          </article>
+
+          <!-- Feature 2: Virtual Wardrobe -->
+          <article class="feature-card card-premium">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.38 3.46L16 2.14a2.62 2.62 0 0 0-1.5 0l-4.38 1.32a2 2 0 0 0-1.38 1.9v3.26L2 12.06v9.42a1 1 0 0 0 1.25.97l8-2a2 2 0 0 0 1.5-1.94v-7.14l7.63-3.46a2 2 0 0 0 1.25-1.83V5.36a2 2 0 0 0-1.25-1.9z"></path>
+              </svg>
+            </div>
+            <h3>Virtual Wardrobe</h3>
+            <p>Digitize your closet, upload images of your clothes, and test combinations instantly on an AI model avatar before pulling them from your physical hangers.</p>
+          </article>
+
+          <!-- Feature 3: Grooming Recommendations -->
+          <article class="feature-card card-premium">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                <path d="M2 12h20"></path>
+              </svg>
+            </div>
+            <h3>Grooming & Skincare</h3>
+            <p>Obtain customized advice for makeup tones, beard styles, skincare routines, and perfumes curated specifically for your profile settings and daily activities.</p>
+          </article>
+
+          <!-- Feature 4: AI Hairstyle Finder -->
+          <article class="feature-card card-premium">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="6" cy="6" r="3"></circle>
+                <circle cx="6" cy="18" r="3"></circle>
+                <line x1="20" y1="4" x2="8.12" y2="15.88"></line>
+                <line x1="14.47" y1="14.48" x2="20" y2="20"></line>
+                <line x1="8.12" y1="8.12" x2="12" y2="12"></line>
+              </svg>
+            </div>
+            <h3>AI Hairstyle Finder</h3>
+            <p>Identify hair types and face shapes through camera scanning to discover and test celebrity cuts that elevate your facial contours before booking your salon.</p>
+          </article>
+
+          <!-- Feature 5: Style Community -->
+          <article class="feature-card card-premium">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <h3>Fashion Community</h3>
+            <p>Connect with a passionate circle of fashion-forward minds on an Instagram-Pinterest style dashboard where you share outfits, ratings, and active discussions.</p>
+          </article>
+
+          <!-- Feature 6: Trends Radar -->
+          <article class="feature-card card-premium">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+              </svg>
+            </div>
+            <h3>Latest Fashion Trends</h3>
+            <p>Track runway lines, global street styles, celebrity collections, and utilize Zivra’s predictive algorithms to wear colors and cuts before they go mainstream.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Detailed Feature Spotlight Sections (Alternating) -->
+    <section class="spotlight-section section-padding">
+      <div class="container">
+        
+        <!-- Spotlight 1: AI Outfit Review & Rating -->
+        <div class="showcase-row">
+          <div class="showcase-img-container">
+            <img src="../../static/images/ai-review.png" alt="AI Outfit Review interface showcase">
+          </div>
+          <div class="showcase-content">
+            <span class="section-badge">Outfit Scanning</span>
+            <h2>Get Visual Analysis Instantly</h2>
+            <p>Unsure if your accessories blend with your shoes? Simply snap a photo before heading out. Zivra analyzes your outfit components to ensure style success.</p>
+            <ul class="showcase-list">
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Real-time color palette harmony scoring
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Detailed confidence meters for specific settings
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Strengths, improvement areas, & item swaps
+              </li>
+            </ul>
+            <!-- <a href="#scan-demo" class="btn-secondary">Explore Outfit scanner</a> -->
+          </div>
+        </div>
+
+        <!-- Spotlight 2: Virtual Wardrobe Try-On -->
+        <div class="showcase-row">
+          <div class="showcase-img-container">
+            <img src="../../static/images/wardrobe.jpeg" alt="Virtual Wardrobe and Try-On model screen showcase">
+          </div>
+          <div class="showcase-content">
+            <span class="section-badge">Virtual Try-On</span>
+            <h2>Your Closet, Fully Re-Imagined</h2>
+            <p>Our virtual try-on engine projects apparel onto a customized digital twin model generated from your parameters. View fits dynamically from multiple perspectives.</p>
+            <ul class="showcase-list">
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Layer tops, jackets, trousers, and shoes
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                One-tap outfits generator based on weather
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Airbnb-style search and filter tags
+              </li>
+            </ul>
+            <!-- <a href="#wardrobe-demo" class="btn-secondary">Test Virtual Try-On</a> -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section section-padding">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Testimonials</span>
+          <h2 class="section-title">What Trendsetters Are Saying</h2>
+          <p class="section-subtitle">Zivra changes styling perspectives. Read the reviews from our initial community members.</p>
+        </div>
+        
+        <div class="testimonials-container">
+          <div class="testimonial-slider">
+            <div class="testimonial-track">
+              
+              <!-- Slide 1 -->
+              <div class="testimonial-slide">
+                <div class="testimonial-card">
+                  <span class="testimonial-quote-icon">“</span>
+                  <div class="testimonial-rating">
+                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                  </div>
+                  <blockquote class="testimonial-text">
+                    "Zivra acts like a high-fashion editor living inside my pocket. The color harmony reviews save me from mismatched items and make morning styling simple and rewarding."
+                  </blockquote>
+                  <div class="testimonial-profile">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=150&auto=format&fit=crop" alt="Alexandra Chen avatar" class="testimonial-avatar">
+                    <cite class="testimonial-name">Alexandra Chen</cite>
+                    <span class="testimonial-title">Fashion Designer, NYC</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 2 -->
+              <div class="testimonial-slide">
+                <div class="testimonial-card">
+                  <span class="testimonial-quote-icon">“</span>
+                  <div class="testimonial-rating">
+                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                  </div>
+                  <blockquote class="testimonial-text">
+                    "The hair recommendation algorithm matched me with a haircut that actually fits my oval face shape. It completely took the anxiety out of talking to my barber."
+                  </blockquote>
+                  <div class="testimonial-profile">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop" alt="Marcus Thompson avatar" class="testimonial-avatar">
+                    <cite class="testimonial-name">Marcus Thompson</cite>
+                    <span class="testimonial-title">Creative Director, London</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 3 -->
+              <div class="testimonial-slide">
+                <div class="testimonial-card">
+                  <span class="testimonial-quote-icon">“</span>
+                  <div class="testimonial-rating">
+                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                  </div>
+                  <blockquote class="testimonial-text">
+                    "Being able to try outfits virtually on my digital avatar has saved me thousands in returns. It's a game changer for online wardrobe curation."
+                  </blockquote>
+                  <div class="testimonial-profile">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=150&auto=format&fit=crop" alt="Elena Rostova avatar" class="testimonial-avatar">
+                    <cite class="testimonial-name">Elena Rostova</cite>
+                    <span class="testimonial-title">Style Influencer, Milan</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Slider Controls -->
+          <div class="testimonial-controls">
+            <button class="control-btn prev" aria-label="Previous Testimonial">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+            <div class="testimonial-dots"></div>
+            <button class="control-btn next" aria-label="Next Testimonial">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section section-padding">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">FAQ</span>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-subtitle">Find fast answers to common styling queries regarding Zivra's AI processes.</p>
+        </div>
+        
+        <div class="faq-container">
+          <!-- FAQ 1 -->
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>How does Zivra analyze my style?</span>
+              <div class="faq-icon-wrapper">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <p>Zivra utilizes advanced vision transformer models trained on professional fashion datasets. Once you upload an image, the system parses colors, items, layers, and context (e.g., business formal, streetwear) to compare them with classic tailoring concepts and trending aesthetics.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Is my personal photo data secure?</span>
+              <div class="faq-icon-wrapper">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <p>Yes. Data privacy is a core principle. Your uploaded photos are processed securely using end-to-end encryption. They are solely used to run styling analysis for your account and are never shared or sold to third parties.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Can I use Zivra's wardrobe try-on with physical clothes I own?</span>
+              <div class="faq-icon-wrapper">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <p>Absolutely! The Virtual Wardrobe lets you snapshot items in your closet. Our image segmentation software removes the background instantly and turns your clothes into digital layering items for your custom avatar.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>How accurate are the face shape recommendations?</span>
+              <div class="faq-icon-wrapper">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </div>
+            </div>
+            <div class="faq-answer">
+              <p>Our face-shape parsing maps crucial facial keypoints (jawline angle, cheekbone width, forehead length ratio) to categorize face structures. Recommendations align with guidelines practiced by leading stylists and barbers worldwide.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  {% include "footer.html" %}
+  <!-- Scripts -->
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

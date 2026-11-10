@@ -1,0 +1,532 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard – Zivra AI Premium Fashion Stylist</title>
+  <meta name="description" content="Your personalized Zivra AI fashion dashboard. Access virtual try-on, wardrobe management, daily insights, style score, and grooming.">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'css/home.css' %}">
+  
+</head>
+<body>
+{% include "header.html" %}
+
+  <!-- Dashboard Main Container -->
+  <main class="dashboard-main-content">
+    
+    <!-- Hero Section -->
+    <section class="dashboard-hero-section">
+      <div class="container">
+        <div class="hero-welcome-wrapper">
+          <div class="hero-welcome-text">
+            <h1 class="hero-greeting" id="hero-greeting-name">Welcome back {{ request.user.first_name }} 👋</h1>
+            <p class="hero-description">Your AI stylist has new recommendations waiting for you.</p>
+          </div>
+          
+          <!-- Quick Action Buttons -->
+          <div class="quick-actions-row">
+            <a href="{% url 'ai_review' %}"><button class="btn-quick-action" id="qa-analyze">
+              <span class="qa-icon">🤖</span>
+              Analyze Outfit
+            </button></a>
+            <!-- <button class="btn-quick-action" id="qa-wardrobe">
+              <span class="qa-icon">👕</span>
+              Open Wardrobe
+            </button>
+            <button class="btn-quick-action" id="qa-grooming">
+              <span class="qa-icon">✨</span>
+              Grooming
+            </button> -->
+            <button class="btn-quick-action btn-qa-chat" id="qa-chat">
+              <span class="qa-icon">💬</span>
+              AI Stylist Chat
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Daily AI Insights Section -->
+    <section class="dashboard-section section-insights">
+      <div class="container">
+        <div class="section-header-compact">
+          <span class="section-badge">Daily Intel</span>
+          <h2 class="section-title-compact">Daily AI Insights</h2>
+        </div>
+        
+        <!-- Insights Large Card -->
+        <div class="insights-container-card card-premium">
+          <div class="insights-radial-gauge-wrapper">
+            <div class="insights-radial-gauge">
+              <svg viewBox="0 0 36 36" class="circular-chart">
+                <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                <path class="circle" stroke-dasharray="92, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                <text x="18" y="20.35" class="percentage">92</text>
+              </svg>
+            </div>
+            <div class="gauge-label-text">
+              <h3>Style Confidence</h3>
+              <p>Elite Fit Level</p>
+            </div>
+          </div>
+          
+          <div class="insights-details-grid">
+            <!-- Metric 1: OOTD -->
+            <div class="insight-metric-item">
+              <div class="insight-metric-icon">🧥</div>
+              <div class="insight-metric-info">
+                <h4>Outfit of the Day</h4>
+                <p>Sand Trench Coat, Charcoal Turtleneck, Slim Cropped Trousers, Black Suede Chelsea Boots.</p>
+              </div>
+            </div>
+            
+            <!-- Metric 2: Weather Advice -->
+            <div class="insight-metric-item">
+              <div class="insight-metric-icon">⛅</div>
+              <div class="insight-metric-info">
+                <h4>Weather Recommendation</h4>
+                <p>Local: 18°C, Partly Cloudy. Layering recommended. Mid-weight outer layers are ideal for comfort today.</p>
+              </div>
+            </div>
+            
+            <!-- Metric 3: Grooming Tip -->
+            <div class="insight-metric-item">
+              <div class="insight-metric-icon">💇</div>
+              <div class="insight-metric-info">
+                <h4>Grooming Tip</h4>
+                <p>Structured Crop. Use a matte clay finish to enhance texture. Hydrate with a light hyaluronic gel serum.</p>
+              </div>
+            </div>
+            
+            <!-- Metric 4: Trending Color -->
+            <div class="insight-metric-item">
+              <div class="insight-metric-icon">🎨</div>
+              <div class="insight-metric-info">
+                <h4>Trending Color Match</h4>
+                <p><strong>Dusty Rose & Sage</strong>. Contrast with warm grey accents. Complements your neutral-light skin season.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Continue Where You Left Off Section -->
+    <section class="dashboard-section section-continue">
+      <div class="container">
+        <div class="section-header-compact">
+          <span class="section-badge">Recent Progress</span>
+          <h2 class="section-title-compact">Continue Where You Left Off</h2>
+        </div>
+        
+        <div class="continue-grid">
+          <!-- Recent AI Review -->
+          <div class="continue-card card-premium">
+            <div class="continue-card-badge">Recent AI Review</div>
+            <div class="continue-card-body">
+              <div class="activity-thumbnail-wrapper">
+                <img src="{% static 'images/recommendation_outfit.jpg' %}" alt="Last Scanned Outfit" class="activity-thumb">
+                <span class="activity-score-badge">95/100</span>
+              </div>
+              <div class="activity-info">
+                <h4>Casual Chic Friday Review</h4>
+                <p>Analyzed today at 10:14 AM</p>
+                <span class="activity-status">Color harmony: Perfect · Fits: Tailored</span>
+              </div>
+            </div>
+            <a href="{% url 'ai_review' %}" class="btn-activity-action">Review Details &rarr;</a>
+          </div>
+          
+          <!-- Latest Wardrobe -->
+          <div class="continue-card card-premium">
+            <div class="continue-card-badge">Latest Wardrobe</div>
+            <div class="continue-card-body">
+              <div class="activity-icon-large">👕</div>
+              <div class="activity-info">
+                <h4>14 Active Closet Items</h4>
+                <p>Last item added: Cashmere Beige Crewneck</p>
+                <span class="activity-status">Digital avatar calibrated · 4 combinations pending</span>
+              </div>
+            </div>
+            <a href="{% url 'wardrobe' %}" class="btn-activity-action">Virtual Closet &rarr;</a>
+          </div>
+          
+          <!-- Recent Community Activity -->
+          <div class="continue-card card-premium">
+            <div class="continue-card-badge">Recent Community</div>
+            <div class="continue-card-body">
+              <div class="activity-icon-large">👥</div>
+              <div class="activity-info">
+                <h4>Active Discussion: Autumn Knits</h4>
+                <p>Your post: "Sage green layering combos"</p>
+                <span class="activity-status">12 new replies · 48 outfit views today</span>
+              </div>
+            </div>
+            <a href="{% url 'community' %}" class="btn-activity-action">Open Discussion &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Access Grid -->
+    <section class="dashboard-section section-quick-grid">
+      <div class="container">
+        <div class="section-header-compact">
+          <span class="section-badge">Platform Utilities</span>
+          <h2 class="section-title-compact">Quick Access Suite</h2>
+        </div>
+        
+        <div class="quick-access-grid">
+          <!-- Card 1: Virtual Wardrobe -->
+          <a href="{% url 'wardrobe' %}" class="qa-grid-card card-premium">
+            <div class="qa-card-icon-box">👕</div>
+            <div class="qa-card-text">
+              <h3>Virtual Wardrobe</h3>
+              <p>Try combinations on your avatar twin.</p>
+            </div>
+          </a>
+          
+          <!-- Card 2: Outfit Review -->
+          <a href="{% url 'ai_review' %}" class="qa-grid-card card-premium">
+            <div class="qa-card-icon-box">🤖</div>
+            <div class="qa-card-text">
+              <h3>AI Outfit Review</h3>
+              <p>Analyze color balance and accessories.</p>
+            </div>
+          </a>
+          
+          <!-- Card 3: Grooming -->
+          <a href="{% url 'grooming' %}" class="qa-grid-card card-premium">
+            <div class="qa-card-icon-box">✨</div>
+            <div class="qa-card-text">
+              <h3>Grooming & Skincare</h3>
+              <p>Face-shape based hair & cosmetic tips.</p>
+            </div>
+          </a>
+          
+          <!-- Card 4: Community -->
+          <a href="{% url 'community' %}" class="qa-grid-card card-premium">
+            <div class="qa-card-icon-box">👥</div>
+            <div class="qa-card-text">
+              <h3>Community Feed</h3>
+              <p>Pinterest-style feeds and style challenges.</p>
+            </div>
+          </a>
+          
+          <!-- Card 5: Trends -->
+          <a href="{% url 'community' %}" class="qa-grid-card card-premium">
+            <div class="qa-card-icon-box">📈</div>
+            <div class="qa-card-text">
+              <h3>Fashion Trends</h3>
+              <p>Predictive seasonal colors & runway boards.</p>
+            </div>
+          </a>
+          
+          <!-- Card 6: Shopping Curation -->
+          <a href="{% url 'contact' %}" class="qa-grid-card card-premium">
+            <div class="qa-card-icon-box">🛍</div>
+            <div class="qa-card-text">
+              <h3>Feedback</h3>
+              <p>Ask your questions here.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Personalized "Recommended for You" Section -->
+    <section class="dashboard-section section-recommended" id="recommended">
+      <div class="container">
+        <div class="section-header-compact">
+          <span class="section-badge font-serif">Curated Collections</span>
+          <h2 class="section-title-compact">Recommended for You</h2>
+          <p class="section-desc-compact">AI styling engine recommendations matching your neutral skin tone and rectangular physique profile.</p>
+        </div>
+        
+        <!-- Tabs for Recommended Curation -->
+        <div class="rec-tabs-wrapper">
+          <button class="rec-tab-btn active" data-tab="clothing">Clothing</button>
+          <button class="rec-tab-btn" data-tab="shoes">Shoes</button>
+          <button class="rec-tab-btn" data-tab="accessories">Accessories</button>
+          <button class="rec-tab-btn" data-tab="hairstyles">Hairstyles</button>
+        </div>
+        
+        <!-- Tab Content Panes -->
+        <div class="rec-content-container">
+          
+          <!-- Pane 1: Clothing -->
+          <div class="rec-tab-pane active" id="pane-clothing">
+            <div class="rec-products-grid">
+              
+              <!-- Card 1 -->
+              <div class="product-premium-card card-premium">
+                <div class="product-img-container">
+                  <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=300&auto=format&fit=crop" alt="Cashmere Coat" class="product-img">
+                  <span class="product-match-badge">98% Fit Match</span>
+                </div>
+                <div class="product-info-box">
+                  <span class="product-tag">Outerwear · Fall</span>
+                  <h3>Drapes Cashmere Overcoat</h3>
+                  <p class="product-price">$380.00</p>
+                  <div class="product-actions-box">
+                    <button class="btn-product-details btn-secondary" data-product-id="cloth-1">View Details</button>
+                    <button class="btn-product-save" aria-label="Save Look">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 2 -->
+              <div class="product-premium-card card-premium">
+                <div class="product-img-container">
+                  <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=300&auto=format&fit=crop" alt="Merino Turtleneck" class="product-img">
+                  <span class="product-match-badge">94% Fit Match</span>
+                </div>
+                <div class="product-info-box">
+                  <span class="product-tag">Knitwear · Winter</span>
+                  <h3>Merino Wool Charcoal Turtleneck</h3>
+                  <p class="product-price">$120.00</p>
+                  <div class="product-actions-box">
+                    <button class="btn-product-details btn-secondary" data-product-id="cloth-2">View Details</button>
+                    <button class="btn-product-save" aria-label="Save Look">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 3 -->
+              <div class="product-premium-card card-premium">
+                <div class="product-img-container">
+                  <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?q=80&w=300&auto=format&fit=crop" alt="Tailored Trousers" class="product-img">
+                  <span class="product-match-badge">90% Fit Match</span>
+                </div>
+                <div class="product-info-box">
+                  <span class="product-tag">Bottoms · Formal</span>
+                  <h3>Slim Cropped Pleated Trousers</h3>
+                  <p class="product-price">$145.00</p>
+                  <div class="product-actions-box">
+                    <button class="btn-product-details btn-secondary" data-product-id="cloth-3">View Details</button>
+                    <button class="btn-product-save" aria-label="Save Look">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          
+          <!-- Pane 2: Shoes -->
+          <div class="rec-tab-pane" id="pane-shoes">
+            <div class="rec-products-grid">
+              
+              <!-- Card 1 -->
+              <div class="product-premium-card card-premium">
+                <div class="product-img-container">
+                  <img src="https://images.unsplash.com/photo-1608256246200-53e635b5b65f?q=80&w=300&auto=format&fit=crop" alt="Chelsea Boots" class="product-img">
+                  <span class="product-match-badge">96% Fit Match</span>
+                </div>
+                <div class="product-info-box">
+                  <span class="product-tag">Footwear · Boots</span>
+                  <h3>Black Suede Chelsea Boots</h3>
+                  <p class="product-price">$260.00</p>
+                  <div class="product-actions-box">
+                    <button class="btn-product-details btn-secondary" data-product-id="shoe-1">View Details</button>
+                    <button class="btn-product-save" aria-label="Save Look">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 2 -->
+              <div class="product-premium-card card-premium">
+                <div class="product-img-container">
+                  <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=300&auto=format&fit=crop" alt="Leather Loafers" class="product-img">
+                  <span class="product-match-badge">92% Fit Match</span>
+                </div>
+                <div class="product-info-box">
+                  <span class="product-tag">Footwear · Classic</span>
+                  <h3>Warm Beige Suede Loafers</h3>
+                  <p class="product-price">$210.00</p>
+                  <div class="product-actions-box">
+                    <button class="btn-product-details btn-secondary" data-product-id="shoe-2">View Details</button>
+                    <button class="btn-product-save" aria-label="Save Look">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          
+          <!-- Pane 3: Accessories -->
+          <div class="rec-tab-pane" id="pane-accessories">
+            <div class="rec-products-grid">
+              
+              <!-- Card 1 -->
+              <div class="product-premium-card card-premium">
+                <div class="product-img-container">
+                  <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=80&w=300&auto=format&fit=crop" alt="Sunglasses" class="product-img">
+                  <span class="product-match-badge">95% Face Match</span>
+                </div>
+                <div class="product-info-box">
+                  <span class="product-tag">Glasses · Eyewear</span>
+                  <h3>Classic Aviator Acetate Sunglasses</h3>
+                  <p class="product-price">$185.00</p>
+                  <div class="product-actions-box">
+                    <button class="btn-product-details btn-secondary" data-product-id="acc-1">View Details</button>
+                    <button class="btn-product-save" aria-label="Save Look">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 2 -->
+              <div class="product-premium-card card-premium">
+                <div class="product-img-container">
+                  <img src="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?q=80&w=300&auto=format&fit=crop" alt="Minimalist Watch" class="product-img">
+                  <span class="product-match-badge">89% Match</span>
+                </div>
+                <div class="product-info-box">
+                  <span class="product-tag">Timepiece · Steel</span>
+                  <h3>Silver Mesh Chronograph Watch</h3>
+                  <p class="product-price">$320.00</p>
+                  <div class="product-actions-box">
+                    <button class="btn-product-details btn-secondary" data-product-id="acc-2">View Details</button>
+                    <button class="btn-product-save" aria-label="Save Look">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          
+          <!-- Pane 4: Hairstyles -->
+          <div class="rec-tab-pane" id="pane-hairstyles">
+            <div class="rec-products-grid">
+              
+              <!-- Card 1 -->
+              <div class="product-premium-card card-premium">
+                <div class="product-img-container">
+                  <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=300&auto=format&fit=crop" alt="Hairstyle Textured Crop" class="product-img">
+                  <span class="product-match-badge">99% Shape Match</span>
+                </div>
+                <div class="product-info-box">
+                  <span class="product-tag">Haircut · Oval Face shape</span>
+                  <h3>Modern Textured Crop</h3>
+                  <p class="product-price">Salon Suggestion</p>
+                  <div class="product-actions-box">
+                    <button class="btn-product-details btn-secondary" data-product-id="hair-1">View Details</button>
+                    <button class="btn-product-save" aria-label="Save Look">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 2 -->
+              <div class="product-premium-card card-premium">
+                <div class="product-img-container">
+                  <img src="https://images.unsplash.com/photo-1605497746444-052d5b50e27a?q=80&w=300&auto=format&fit=crop" alt="Low Fade Pompadour" class="product-img">
+                  <span class="product-match-badge">93% Shape Match</span>
+                </div>
+                <div class="product-info-box">
+                  <span class="product-tag">Haircut · Thick Hair</span>
+                  <h3>Low Fade Pompadour</h3>
+                  <p class="product-price">Barber Suggestion</p>
+                  <div class="product-actions-box">
+                    <button class="btn-product-details btn-secondary" data-product-id="hair-2">View Details</button>
+                    <button class="btn-product-save" aria-label="Save Look">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- Trending & Visual Highlights Section -->
+    <section class="dashboard-section section-trending">
+      <div class="container">
+        <div class="section-header-compact">
+          <span class="section-badge">Visual Radar</span>
+          <h2 class="section-title-compact">Coming Soon...</h2>
+          <!-- <h2 class="section-title-compact">Trending Fashion Radar</h2> -->
+        </div>
+        
+        <div class="trending-grid">
+          <!-- Card 1: Trending Colors -->
+          <div class="trending-card card-premium">
+            <h3 class="trending-card-title">Season Colors</h3>
+            <div class="color-palette-display">
+              <div class="color-bar" style="background: #FFEBF4; width: 25%;" title="Soft Pink"></div>
+              <div class="color-bar" style="background: #E2D4C9; width: 25%;" title="Warm Sand"></div>
+              <div class="color-bar" style="background: #4D5D53; width: 25%;" title="Sage Green"></div>
+              <div class="color-bar" style="background: #1A1A1A; width: 25%;" title="Deep Charcoal"></div>
+            </div>
+            <p class="trending-desc"><strong>Autumn Pastels:</strong> Warm neutrals with soft sage contrasts dominate current street and formal pairings.</p>
+          </div>
+          
+          <!-- Card 2: Celebrity Look -->
+          <div class="trending-card card-premium">
+            <h3 class="trending-card-title">Celebrity Looks</h3>
+            <div class="celeb-highlight">
+              <span class="match-rating-pill">Celebrity Spot: Timothée Chalamet</span>
+              <p class="trending-desc" style="margin-top: 0.5rem;">Velvet monochrome suit layers with casual silk shirts. AI predicted match score: 94% on narrow physiques.</p>
+            </div>
+          </div>
+          
+          <!-- Card 3: Street Style -->
+          <div class="trending-card card-premium">
+            <h3 class="trending-card-title">Street Fashion</h3>
+            <div class="celeb-highlight">
+              <span class="match-rating-pill">Street: Milan Fashion Week</span>
+              <p class="trending-desc" style="margin-top: 0.5rem;">Oversized unstructured coats paired with retro runner sneakers and wire-frame shades.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Product Details Popup Modal -->
+  <div class="modal-backdrop" id="product-modal" role="dialog" aria-modal="true">
+    <div class="modal-card glass">
+      <button class="btn-close-modal" id="close-modal-btn" aria-label="Close Modal">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      
+      <div class="modal-grid" id="modal-content-area">
+        <!-- Rendered Dynamically in JS -->
+      </div>
+    </div>
+  </div>
+
+{% include "ai_chat.html" %}
+  {% include "footer.html" %}
+  <!-- Scripts -->
+  <script src="{% static 'js/home.js' %}" defer></script>
+  <script src="{% static 'js/ai-chat.js' %}" defer></script>
+  <script src="{% static 'js/community.js' %}"></script>
+  <script src="{% static 'js/ai-review.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<div class="stylist-widget-container" id="stylist-widget">
+    <button class="stylist-bubble-btn" id="stylist-toggle-btn" aria-label="Open AI Stylist chat">
+      <span class="bubble-icon">💬</span>
+      <span class="bubble-pulse"></span>
+    </button>
+
+    <div class="stylist-chat-window glass" id="stylist-chat-window">
+      <div class="chat-header">
+        <div class="chat-avatar-box">
+          <span class="chat-avatar-emoji">🤖</span>
+        </div>
+
+        <div class="chat-title-info">
+          <h4>Zivra AI Stylist</h4>
+          <span class="chat-status">Active Stylist Session</span>
+        </div>
+
+        <button class="btn-minimize-chat" id="chat-minimize-btn" aria-label="Minimize Chat">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+        </button>
+      </div>
+
+     <div class="chat-body-area" id="chat-messages">
+
+    <!-- Chat History List -->
+    <!-- <div id="chat-history-list" class="chat-history-list"></div> -->
+
+    <!-- Current Chat Messages -->
+    <div id="chat-history-track">
+        <div class="chat-message bot">
+            <p>Hi Charlotte! I've loaded your profile. How can I assist your styling today?</p>
+        </div>
+    </div>
+
+    <div id="chat-typing-indicator" class="chat-message bot hidden">
+        <p><i>Zivra Stylist is thinking...</i></p>
+    </div>
+
+</div>
+   <div class="buttons-chat btn-custom-raper">
+  <button type="submit" id="new-chat-btn" class="btn-chat-custom" >New</button>
+    <!-- <button type="submit" id="delete-history-btn" class="btn-chat-custom" > Delete history -->
+  </button>
+</div>
+      <form class="chat-input-wrapper" id="chat-input-form" onsubmit="event.preventDefault();">
+        <input
+          type="text"
+          id="chat-message-input"
+          placeholder="Ask about outfits, grooming, colors..."
+          required
+          autocomplete="off"
+        >
+
+        <button type="submit" class="btn-send-message" id="chat-send-btn" aria-label="Send message">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </form>
+    </div>
+</div>

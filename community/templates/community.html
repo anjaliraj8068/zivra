@@ -1,0 +1,534 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Style Community – Zivra AI Fashion Network</title>
+  <meta name="description" content="Connect, share outfits, participate in challenges, vote on style polls, and discuss fashion trends on the Zivra Style Community.">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'css/community.css' %}">
+  <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+{% include "header.html" %}
+  <!-- Main Workspace Content -->
+  <main class="community-main-content">
+    
+    <!-- Hero Section -->
+    <section class="community-hero-section">
+      <div class="container hero-container">
+        <div class="hero-text-block">
+          <h1 class="hero-title">Join the Zivra Community</h1>
+          <p class="hero-subtitle">Share your style, discover inspiration, ask fashion questions, and connect with fashion lovers around the world.</p>
+          <div class="hero-actions-row">
+            <button class="btn-primary" id="btn-hero-create-post">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-right: 8px;"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              Create Post
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+   <!-- Search & Filter Controls -->
+<section class="filters-section">
+    <div class="container">
+        <div class="filters-card glass">
+
+            <form method="GET" action="{% url 'community' %}">
+                <div class="search-filters-row">
+
+                    <!-- Search -->
+                    <div class="search-field-box">
+                        <svg width="18" height="18" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+
+                        <input
+                            type="text"
+                            id="feed-search"
+                            name="search"
+                            placeholder="Search posts or creators..."
+                            value="{{ request.GET.search }}">
+                    </div>
+
+                    <!-- Filter Buttons -->
+                    <div class="filter-chips-scroll">
+
+                        <!-- All Posts -->
+                        <a href="{% url 'community' %}"
+                           class="filter-chip {% if not request.GET.mine %}active{% endif %}">
+                            All Posts
+                        </a>
+
+                        <!-- My Posts -->
+                        <!-- <a href="{% url 'community' %}?mine=1"
+                           class="filter-chip {% if request.GET.mine == '1' %}active{% endif %}">
+                            My Posts
+                        </a> -->
+
+                    </div>
+
+                </div>
+            </form>
+
+        </div>
+    </div>
+</section>
+
+    <!-- Two Column Workspace Layout Grid -->
+    <section class="workspace-grid-section">
+      <div class="container workspace-container">
+        
+        <!-- Left: Main Pinterest style Masonry Feed -->
+        <div class="feed-column">
+          <div class="masonry-feed-grid" id="masonry-feed">
+            <!-- Dynamic Post Cards Rendered Here -->
+          </div>
+          
+          <!-- Loading status indicator -->
+          <div class="infinite-scroll-loader" id="loader">
+            <span class="spinner"></span>
+            <p>Gathering style updates...</p>
+          </div>
+        </div>
+
+        <!-- Right: Informative Sidebar -->
+        <aside class="sidebar-column">
+          <!-- Card 1: Popular Creators -->
+          <!-- <div class="sidebar-card card-premium">
+            <h3 class="sidebar-title">Popular Creators</h3>
+            <ul class="creators-list" id="popular-creators-list"> -->
+              <!-- Rendered via JS -->
+            <!-- </ul>
+          </div> -->
+          
+          <!-- Card 2: Weekly Fashion Challenges -->
+          <div class="sidebar-card card-premium">
+            <h3 class="sidebar-title">Weekly Challenges</h3>
+            <div class="challenges-stack">
+              <div class="challenge-item active">
+                <div class="challenge-info">
+                  <h4>#SummerStyleChallenge</h4>
+                  <p>Post your lightest, most breathable summer fits.</p>
+                  <span class="challenge-stat">142 participating</span>
+                </div>
+                <button class="btn-challenge-join">
+    Join
+</button>
+              </div>
+              <div class="challenge-item">
+                <div class="challenge-info">
+                  <h4>#MonochromeWeek</h4>
+                  <p>Layer outfits using a single color spectrum.</p>
+                  <span class="challenge-stat">98 participating</span>
+                </div>
+                <button class="btn-challenge-join">
+    Join
+</button>
+              </div>
+              <div class="challenge-item">
+                <div class="challenge-info">
+                  <h4>#EthnicWearChallenge</h4>
+                  <p>Showcase luxury heritage patterns and items.</p>
+                  <span class="challenge-stat">65 participating</span>
+                </div>
+                <button class="btn-challenge-join">
+    Join
+</button>
+              </div>
+            </div>
+          </div>
+
+        </aside>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Create Post Modal popup -->
+  <div class="modal-backdrop" id="create-post-modal" role="dialog" aria-modal="true">
+    <div class="modal-card glass" style="max-width: 650px;">
+      <button class="btn-close-modal" id="close-create-btn" aria-label="Close Modal">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      
+      <h2 class="modal-title font-serif" style="margin-bottom: 0.5rem;">Create New Post</h2>
+      <p class="modal-brand" style="margin-bottom: 2rem; font-weight:500;">Inspire the community with your fashion choices</p>
+      
+      <!-- Type Select tabs -->
+      <div class="post-type-tabs">
+    <button type="button" class="type-tab-btn active" data-type="outfit">
+        👗 Outfit Post
+    </button>
+
+    <button type="button" class="type-tab-btn" data-type="question">
+        ❓ Ask Question
+    </button>
+
+    <!-- <button type="button" class="type-tab-btn" data-type="poll">
+        📊 Interactive Poll
+    </button> -->
+</div>
+
+   <form
+    id="create-post-form"
+    action="{% url 'create_post' %}"
+    method="POST"
+    enctype="multipart/form-data">
+
+    {% csrf_token %}
+        <div class="form-scrollable-body">
+
+    <!-- Hidden Post Type -->
+    <input type="hidden" id="post-type" name="post_type" value="image">
+
+    <!-- Drag & Drop Upload -->
+    <div class="form-upload-area" id="form-upload-zone">
+        <div class="upload-zone-inner">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2"
+                 style="color: var(--color-primary); margin-bottom: 0.75rem;">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="17 8 12 3 7 8"></polyline>
+                <line x1="12" y1="3" x2="12" y2="15"></line>
+            </svg>
+
+            <p class="upload-title">Drag & Drop style images</p>
+            <p class="upload-subtitle">Upload up to 10 images (JPG, PNG)</p>
+        </div>
+
+        <input
+            type="file"
+            id="post-images-input"
+            name="image"
+            accept="image/*"
+            multiple
+            style="display:none;">
+
+        <div class="upload-previews-grid" id="previews-container"></div>
+    </div>
+
+    <!-- Poll Editor -->
+    <div class="poll-editor-box" id="poll-editor" style="display:none;">
+        <label class="form-label">Poll Options</label>
+
+        <div class="poll-options-inputs">
+
+            <input
+                type="text"
+                name="option1"
+                class="form-input poll-opt-val"
+                placeholder="Option 1 (e.g. Outfit A)">
+
+            <input
+                type="text"
+                name="option2"
+                class="form-input poll-opt-val"
+                placeholder="Option 2 (e.g. Outfit B)">
+
+            <input
+                type="text"
+                name="option3"
+                class="form-input poll-opt-val"
+                placeholder="Option 3 (Optional)">
+
+        </div>
+    </div>
+
+    <!-- Caption -->
+    <div class="form-group-block">
+
+        <label
+            for="post-caption"
+            class="form-label"
+            id="caption-label-text">
+            Write Caption
+        </label>
+
+        <textarea
+            id="post-caption"
+            name="caption"
+            class="form-textarea"
+            placeholder="Describe your layout, fit parameters, and color season choice..."
+            required></textarea>
+
+    </div>
+
+    <!-- Attributes -->
+    <div class="form-attributes-grid">
+
+        <!-- Occasion -->
+        <div class="form-group-block">
+
+            <label for="post-occasion" class="form-label">
+                Occasion Style
+            </label>
+
+            <select
+                id="post-occasion"
+                name="occasion"
+                class="form-select">
+
+                <option value="Casual">Casual</option>
+                <option value="Formal">Formal</option>
+                <option value="Traditional">Traditional</option>
+                <option value="Party">Party</option>
+                <option value="Office">Office</option>
+                <option value="College">College</option>
+                <option value="Streetwear">Streetwear</option>
+
+            </select>
+
+        </div>
+
+        <!-- Location -->
+        <div class="form-group-block">
+
+            <label for="post-location" class="form-label">
+                Location (Optional)
+            </label>
+
+            <input
+                type="text"
+                id="post-location"
+                name="location"
+                class="form-input"
+                placeholder="e.g. Milan, Italy">
+
+        </div>
+
+        <!-- Hashtags -->
+        <div class="form-group-block">
+
+            <label for="post-hashtags" class="form-label">
+                Hashtags (Space separated)
+            </label>
+
+            <input
+                type="text"
+                id="post-hashtags"
+                name="hashtags"
+                class="form-input"
+                placeholder="#autumn #minimalist">
+
+        </div>
+
+        <!-- Privacy -->
+        <div class="form-group-block">
+
+            <label for="post-privacy" class="form-label">
+                Privacy Visibility
+            </label>
+
+            <select
+                id="post-privacy"
+                name="visibility"
+                class="form-select">
+
+                <option value="public">Public</option>
+                <option value="friends">Friends Only</option>
+                <option value="private">Private</option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+</div>
+
+        <div class="modal-submit-row">
+          <button type="submit" class="btn-primary" style="padding: 0.95rem 2.5rem;">Publish Post</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Detailed Comments & Post details dialog Drawer modal -->
+  <div class="modal-backdrop" id="post-detail-modal" role="dialog" aria-modal="true">
+    <div class="modal-card glass" style="max-width: 900px; padding: 0; overflow: hidden;">
+      <button class="btn-close-modal" id="close-detail-btn" aria-label="Close Details" style="z-index:10;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      
+      <div class="detail-modal-layout" id="detail-modal-content">
+        <!-- Rendered Dynamically in JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Mood Board Selector Drawer -->
+  <!-- <div class="moodboard-drawer glass" id="moodboard-drawer">
+    <div class="drawer-header">
+      <h4>Save Post to Mood Board</h4>
+      <button class="btn-close-drawer" id="close-drawer-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    <div class="drawer-body">
+      <p class="drawer-instruction">Select a collection to store this look:</p>
+      <div class="moodboard-options-list">
+        <button class="moodboard-option-item" data-board="Wedding Inspiration">
+          <span class="board-emoji">💒</span>
+          Wedding Inspiration
+        </button>
+        <button class="moodboard-option-item" data-board="College Outfits">
+          <span class="board-emoji">🎒</span>
+          College Outfits
+        </button>
+        <button class="moodboard-option-item" data-board="Vacation Looks">
+          <span class="board-emoji">✈️</span>
+          Vacation Looks
+        </button>
+        <button class="moodboard-option-item" data-board="Minimalist Style">
+          <span class="board-emoji">🧥</span>
+          Minimalist Style
+        </button>
+        <button class="moodboard-option-item" data-board="Streetwear Collection">
+          <span class="board-emoji">👟</span>
+          Streetwear Collection
+        </button>
+      </div>
+      <div class="new-board-row">
+        <input type="text" id="new-board-input" placeholder="Create new collection name...">
+        <button class="btn-create-board">+</button>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- Premium Image Lightbox -->
+  <div class="lightbox-backdrop" id="image-lightbox" role="dialog" aria-hidden="true">
+    <button class="btn-close-lightbox" id="close-lightbox-btn" aria-label="Close Lightbox">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+    <button class="lightbox-arrow prev" id="lightbox-prev" aria-label="Previous Image">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <div class="lightbox-content">
+      <img src="" alt="Enlarged style image" id="lightbox-image">
+      <div class="lightbox-zoom-hint">Double-click to zoom</div>
+    </div>
+    <button class="lightbox-arrow next" id="lightbox-next" aria-label="Next Image">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+  </div>
+
+  <!-- Share Popup Modal -->
+  <div class="modal-backdrop" id="share-modal" role="dialog" aria-modal="true">
+    <div class="modal-card glass" style="max-width: 380px; padding: 2rem;">
+      <button class="btn-close-modal" id="close-share-btn" aria-label="Close Share Menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <h3 class="modal-title font-serif" style="margin-bottom: 1.5rem; font-size: 1.5rem;">Share Post</h3>
+      <div class="share-options-list">
+        <button class="share-opt-btn" id="share-copy-link">
+          <span class="share-icon-wrap">🔗</span>
+          <span>Copy Link</span>
+        </button>
+        <button class="share-opt-btn" id="share-zivra">
+          <span class="share-icon-wrap">🤖</span>
+          <span>Share Inside Zivra</span>
+        </button>
+        <button class="share-opt-btn" id="share-whatsapp">
+          <span class="share-icon-wrap">💬</span>
+          <span>Share to WhatsApp</span>
+        </button>
+        <button class="share-opt-btn" id="share-x">
+          <span class="share-icon-wrap">𝕏</span>
+          <span>Share to X</span>
+        </button>
+        <button class="share-opt-btn" id="share-facebook">
+          <span class="share-icon-wrap">🔵</span>
+          <span>Share to Facebook</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification System Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Profile Preview Hover Card Box -->
+  <div class="profile-hover-popover glass" id="profile-popover">
+    <!-- Populated Dynamically via JS -->
+  </div>
+  {% include "ai_chat.html" %}
+{% include "footer.html" %}
+  <!-- Scripts -->
+   
+</body>
+<script>
+let communityPosts = [
+  {% for post in posts %}
+    {
+    id: "{{ post.id }}",
+
+    type: "{{ post.post_type }}",
+
+    user: {
+        name: "{{ post.user.get_full_name|default:post.user.username|escapejs }}",
+        username: "@{{ post.user.username|escapejs }}",
+
+        avatar:
+        "{% if post.user.userprofile.profile_picture %}{{ post.user.userprofile.profile_picture.url }}{% else %}/static/images/default-profile.png{% endif %}",
+
+        verified: false,
+        bio: "",
+        followers: "0",
+        following: "0",
+        postsCount: "0"
+    },
+
+    time: "{{ post.created_at|timesince }} ago",
+
+    location: "{{ post.location|default:''|escapejs }}",
+
+    images: [
+        {% if post.imagepost %}
+        "{{ post.imagepost.image.url }}"
+        {% endif %}
+    ],
+
+    caption: "{{ post.caption|escapejs }}",
+
+    tags: [
+        {% for tag in post.hashtags.all %}
+        "{{ tag.name }}",
+        {% endfor %}
+    ],
+
+    likes: {{ post.likes.count }},
+liked: {{ post.is_liked|yesno:"true,false" }},
+
+    comments: [
+
+{% for c in post.comments.all %}
+{
+    id: "{{ c.id }}",
+    user: "{{ c.user.get_full_name|default:c.user.username|escapejs }}",
+    avatar:
+    "{% if c.user.userprofile.profile_picture %}{{ c.user.userprofile.profile_picture.url }}{% else %}/static/images/default-profile.png{% endif %}",
+    text: "{{ c.comment|escapejs }}",
+    likes: 0,
+    liked: false,
+    time: "{{ c.created_at|timesince }} ago"
+},
+{% endfor %}
+
+]
+},
+{% endfor %}
+];
+</script>
+
+<script src="{% static 'js/home.js' %}" defer></script>
+<script src="{% static 'js/community.js' %}"></script>
+<script src="{% static 'js/ai-review.js' %}"></script>
+  <script src="{% static 'js/ai-chat.js' %}" defer></script>
+</html>

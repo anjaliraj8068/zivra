@@ -1,0 +1,543 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skin & Beauty – Zivra | Skincare, Routines & Hairstyles</title>
+  <meta name="description" content="Explore skincare routines, beauty tips, hairstyle inspiration and educational guides curated by Zivra. Discover what works for your skin type and style.">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'css/home.css' %}">
+  <link rel="stylesheet" href="{% static 'css/skincare.css' %}">
+</head>
+<body>
+{% include "header.html" %}
+
+  <!-- ============================================================ MAIN ============================================================ -->
+  <main class="sk-main">
+
+    <!-- ========== 1. HERO ========== -->
+    <section class="sk-hero" id="sk-hero">
+      <div class="sk-hero-bg" aria-hidden="true"></div>
+      <div class="container sk-hero-inner">
+        <div class="sk-hero-content">
+          <span class="hero-badge">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M12 8v4l3 3"/></svg>
+            Skin &amp; Beauty
+          </span>
+          <h1 class="sk-hero-title">Your Skin. Your Care.<br><em>Your Confidence.</em></h1>
+          <p class="sk-hero-subtitle">Explore simple skincare routines, beauty tips, and styles curated to help you feel your best.</p>
+          <a href="#skin-concerns" class="btn-primary sk-hero-cta" id="btn-explore-concerns">
+            Explore Skin Concerns
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+        <div class="sk-hero-image-wrap">
+          <div class="sk-hero-img-container">
+            <img class="grooming_img" src="{% static 'images/grooming.jpg' %}" alt="Grooming">
+            <div class="sk-hero-img-overlay"></div>
+          </div>
+          <div class="sk-hero-float-tag glass">
+            <span class="sk-float-emoji">✨</span>
+            <div><strong>Curated Care</strong><span>Simple, effective routines</span></div>
+          </div>
+          <div class="sk-hero-orb" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 2. SKIN TYPE SELECTOR ========== -->
+    <!-- <section class="sk-type-section">
+      <div class="container">
+        <div class="sk-type-card glass">
+          <div class="sk-type-left">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+            <span>What's your skin type?</span>
+          </div>
+          <div class="sk-type-pills" role="group" aria-label="Select skin type" id="skin-type-group">
+            <button class="sk-type-pill active" data-type="normal" id="type-normal">Normal</button>
+            <button class="sk-type-pill" data-type="dry" id="type-dry">Dry</button>
+            <button class="sk-type-pill" data-type="oily" id="type-oily">Oily</button>
+            <button class="sk-type-pill" data-type="combination" id="type-combination">Combination</button>
+            <button class="sk-type-pill" data-type="sensitive" id="type-sensitive">Sensitive</button>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- ========== 3. SKIN CONCERNS ========== -->
+    <section class="sk-concerns-section" id="skin-concerns">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Skin Concerns</span>
+          <h2 class="section-title">What Would You Like to Improve?</h2>
+          <p class="section-subtitle">Select a concern to explore curated care suggestions.</p>
+        </div>
+        <div class="sk-concerns-grid" id="concerns-grid">
+
+          <button class="sk-concern-card" data-concern="acne" aria-label="Acne / Breakouts">
+            <div class="sk-concern-icon-wrap" style="background:linear-gradient(135deg,#FFEBF4,#FFD6E8)"><span class="sk-concern-emoji">🌿</span></div>
+            <h3>Acne &amp; Breakouts</h3>
+            <p>Manage and reduce blemishes with gentle, targeted care.</p>
+           <span class="sk-concern-btn">Explore Care <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </button>
+
+          <button class="sk-concern-card" data-concern="darkcircles" aria-label="Dark Circles">
+            <div class="sk-concern-icon-wrap" style="background:linear-gradient(135deg,#EEF2FF,#DBEAFE)"><span class="sk-concern-emoji">👁️</span></div>
+            <h3>Dark Circles</h3>
+            <p>Brighten and refresh the delicate under-eye area.</p>
+            <span class="sk-concern-btn">Explore Care <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
+          </button>
+
+          <button class="sk-concern-card" data-concern="puffiness" aria-label="Under-Eye Puffiness">
+            <div class="sk-concern-icon-wrap" style="background:linear-gradient(135deg,#ECFDF5,#D1FAE5)"><span class="sk-concern-emoji">💧</span></div>
+            <h3>Under-Eye Puffiness</h3>
+            <p>Reduce morning puffiness with cooling and soothing habits.</p>
+           <span class="sk-concern-btn">Explore Care <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
+          </button>
+
+          <button class="sk-concern-card" data-concern="dryness" aria-label="Dryness">
+            <div class="sk-concern-icon-wrap" style="background:linear-gradient(135deg,#FFF7ED,#FED7AA)"><span class="sk-concern-emoji">🌿</span></div>
+            <h3>Dryness</h3>
+            <p>Restore moisture and keep your skin feeling soft and supple.</p>
+            <span class="sk-concern-btn">Explore Care <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
+          </button>
+
+          <button class="sk-concern-card" data-concern="oiliness" aria-label="Excess Oil">
+            <div class="sk-concern-icon-wrap" style="background:linear-gradient(135deg,#FFFBEB,#FEF3C7)"><span class="sk-concern-emoji">✨</span></div>
+            <h3>Excess Oil</h3>
+            <p>Balance sebum production for a fresh, comfortable complexion.</p>
+            <span class="sk-concern-btn">Explore Care <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
+          </button>
+
+          <button class="sk-concern-card" data-concern="uneven" aria-label="Uneven Skin Tone">
+            <div class="sk-concern-icon-wrap" style="background:linear-gradient(135deg,#FDF4FF,#FAE8FF)"><span class="sk-concern-emoji">🌸</span></div>
+            <h3>Uneven Skin Tone</h3>
+            <p>Work towards a more even, radiant-looking complexion.</p>
+            <span class="sk-concern-btn">Explore Care <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
+          </button>
+
+          <button class="sk-concern-card" data-concern="dull" aria-label="Dull Skin">
+            <div class="sk-concern-icon-wrap" style="background:linear-gradient(135deg,#FFFBEB,#FEF9C3)"><span class="sk-concern-emoji">⭐</span></div>
+            <h3>Dull-Looking Skin</h3>
+            <p>Revive radiance with gentle exfoliation and hydration.</p>
+            <span class="sk-concern-btn">Explore Care <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
+          </button>
+
+          <button class="sk-concern-card" data-concern="blackheads" aria-label="Blackheads">
+            <div class="sk-concern-icon-wrap" style="background:linear-gradient(135deg,#F0FDF4,#DCFCE7)"><span class="sk-concern-emoji">🔬</span></div>
+            <h3>Blackheads</h3>
+            <p>Keep pores clean with consistent and gentle cleansing habits.</p>
+            <span class="sk-concern-btn">Explore Care <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
+          </button>
+
+          <button class="sk-concern-card" data-concern="texture" aria-label="Rough Texture">
+            <div class="sk-concern-icon-wrap" style="background:linear-gradient(135deg,#FFF1F2,#FFE4E6)"><span class="sk-concern-emoji">🍃</span></div>
+            <h3>Rough Texture</h3>
+            <p>Smooth and soften skin with hydration and gentle exfoliation.</p>
+            <span class="sk-concern-btn">Explore Care <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
+          </button>
+
+          <button class="sk-concern-card" data-concern="lips" aria-label="Chapped Lips">
+            <div class="sk-concern-icon-wrap" style="background:linear-gradient(135deg,#FFEBF4,#FFD6E8)"><span class="sk-concern-emoji">💋</span></div>
+            <h3>Chapped Lips</h3>
+            <p>Keep your lips soft and moisturised with simple lip care.</p>
+            <span class="sk-concern-btn">Explore Care <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
+          </button>
+
+          <button class="sk-concern-card" data-concern="sun" aria-label="Sun Protection">
+            <div class="sk-concern-icon-wrap" style="background:linear-gradient(135deg,#FFFBEB,#FEF08A)"><span class="sk-concern-emoji">☀️</span></div>
+            <h3>Sun Protection</h3>
+            <p>Protect your skin daily with the right sunscreen habits.</p>
+            <span class="sk-concern-btn">Explore Care <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
+          </button>
+
+          <button class="sk-concern-card" data-concern="general" aria-label="General Skin Health">
+            <div class="sk-concern-icon-wrap" style="background:linear-gradient(135deg,#ECFDF5,#A7F3D0)"><span class="sk-concern-emoji">💚</span></div>
+            <h3>General Skin Health</h3>
+            <p>Build a balanced routine for everyday healthy-looking skin.</p>
+            <span class="sk-concern-btn">Explore Care <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
+          </button>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 4. SUGGESTED CARE (dynamic) ========== -->
+    <section class="sk-care-section" id="suggested-care" style="display:none;">
+      <div class="container">
+        <div class="sk-care-header">
+          <span class="section-badge">Suggested Care</span>
+          <h2 class="section-title sk-care-concern-name" id="care-concern-name">Dryness</h2>
+          <p class="section-subtitle sk-care-concern-desc" id="care-concern-desc">Restore moisture and keep skin soft and supple.</p>
+        </div>
+
+        <div class="sk-care-grid">
+          <!-- Morning Care -->
+          <div class="sk-care-card card-premium">
+            <div class="sk-care-card-header sk-morning">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+              <h3>Morning Care</h3>
+            </div>
+            <ol class="sk-care-steps" id="morning-steps"></ol>
+          </div>
+
+          <!-- Evening Care -->
+          <div class="sk-care-card card-premium">
+            <div class="sk-care-card-header sk-evening">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+              <h3>Evening Care</h3>
+            </div>
+            <ol class="sk-care-steps" id="evening-steps"></ol>
+          </div>
+
+          <!-- Helpful Habits -->
+          <div class="sk-care-card card-premium sk-habits-card">
+            <div class="sk-care-card-header sk-habits">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              <h3>Helpful Habits</h3>
+            </div>
+            <ul class="sk-habits-list" id="habits-list"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 5. DO & DON'T ========== -->
+    <section class="sk-dodont-section section-padding" style="background:var(--color-bg-soft)">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Skin Wisdom</span>
+          <h2 class="section-title">Good Habits &amp; What to Avoid</h2>
+          <p class="section-subtitle">Simple principles for healthier-looking skin.</p>
+        </div>
+        <div class="sk-dodont-grid">
+          <!-- DO -->
+          <div class="sk-do-card card-premium">
+            <div class="sk-dodont-head sk-do-head">
+              <div class="sk-dodont-icon-circle sk-do-circle">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <h3>Good Habits</h3>
+            </div>
+            <ul class="sk-dodont-list">
+              <li><span class="sk-do-bullet">✓</span> Cleanse gently twice a day</li>
+              <li><span class="sk-do-bullet">✓</span> Moisturise morning and night</li>
+              <li><span class="sk-do-bullet">✓</span> Apply sunscreen every day</li>
+              <li><span class="sk-do-bullet">✓</span> Stay well-hydrated throughout the day</li>
+              <li><span class="sk-do-bullet">✓</span> Remove makeup before sleeping</li>
+              <li><span class="sk-do-bullet">✓</span> Change pillowcases regularly</li>
+              <li><span class="sk-do-bullet">✓</span> Keep your routine simple and consistent</li>
+              <li><span class="sk-do-bullet">✓</span> Patch-test new products first</li>
+              <li><span class="sk-do-bullet">✓</span> Eat a balanced, varied diet</li>
+              <li><span class="sk-do-bullet">✓</span> Get adequate sleep each night</li>
+            </ul>
+          </div>
+          <!-- DON'T -->
+          <div class="sk-dont-card card-premium">
+            <div class="sk-dodont-head sk-dont-head">
+              <div class="sk-dodont-icon-circle sk-dont-circle">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </div>
+              <h3>Things to Avoid</h3>
+            </div>
+            <ul class="sk-dodont-list">
+              <li><span class="sk-dont-bullet">✕</span> Skipping sunscreen on cloudy days</li>
+              <li><span class="sk-dont-bullet">✕</span> Scrubbing skin too harshly</li>
+              <li><span class="sk-dont-bullet">✕</span> Using very hot water on your face</li>
+              <li><span class="sk-dont-bullet">✕</span> Popping or picking at spots</li>
+              <li><span class="sk-dont-bullet">✕</span> Touching your face frequently</li>
+              <li><span class="sk-dont-bullet">✕</span> Using too many new products at once</li>
+              <li><span class="sk-dont-bullet">✕</span> Sleeping with makeup on</li>
+              <li><span class="sk-dont-bullet">✕</span> Over-cleansing your skin</li>
+              <li><span class="sk-dont-bullet">✕</span> Ignoring the neck and chest area</li>
+              <li><span class="sk-dont-bullet">✕</span> Expecting overnight results</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 6. BEAUTY ROUTINE BUILDER ========== -->
+    <section class="sk-routine-section section-padding">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Beauty Routine</span>
+          <h2 class="section-title">Build Your Routine</h2>
+          <p class="section-subtitle">Simple steps for every part of your day.</p>
+        </div>
+        <div class="sk-routine-grid">
+
+          <!-- Morning -->
+          <div class="sk-routine-card card-premium">
+            <div class="sk-routine-header sk-morning-header">
+              <div class="sk-routine-time-icon">🌅</div>
+              <div>
+                <h3>Morning</h3>
+                <p>Start fresh &amp; protected</p>
+              </div>
+            </div>
+            <ol class="sk-routine-steps">
+              <li><span class="sk-step-num">01</span><div><strong>Gentle Cleanser</strong><p>Remove overnight oils with a mild cleanser</p></div></li>
+              <li><span class="sk-step-num">02</span><div><strong>Toner / Mist</strong><p>Optional: balance and prep skin</p></div></li>
+              <li><span class="sk-step-num">03</span><div><strong>Eye Cream</strong><p>Gently dab around the eye area</p></div></li>
+              <li><span class="sk-step-num">04</span><div><strong>Moisturiser</strong><p>Lock in hydration for the day</p></div></li>
+              <li><span class="sk-step-num">05</span><div><strong>Sunscreen SPF 30+</strong><p>The most important step — every single day</p></div></li>
+            </ol>
+          </div>
+
+          <!-- Daytime -->
+          <div class="sk-routine-card card-premium">
+            <div class="sk-routine-header sk-day-header">
+              <div class="sk-routine-time-icon">☀️</div>
+              <div>
+                <h3>Daytime</h3>
+                <p>Maintain &amp; refresh</p>
+              </div>
+            </div>
+            <ol class="sk-routine-steps">
+              <li><span class="sk-step-num">01</span><div><strong>SPF Top-Up</strong><p>Reapply sunscreen every 2–3 hours outdoors</p></div></li>
+              <li><span class="sk-step-num">02</span><div><strong>Facial Mist</strong><p>Optional: refresh and cool your skin</p></div></li>
+              <li><span class="sk-step-num">03</span><div><strong>Lip Balm</strong><p>Keep lips moisturised throughout the day</p></div></li>
+              <li><span class="sk-step-num">04</span><div><strong>Stay Hydrated</strong><p>Drink enough water for skin from within</p></div></li>
+              <li><span class="sk-step-num">05</span><div><strong>Avoid Touching Face</strong><p>Minimise bacteria transfer</p></div></li>
+            </ol>
+          </div>
+
+          <!-- Night -->
+          <div class="sk-routine-card card-premium">
+            <div class="sk-routine-header sk-night-header">
+              <div class="sk-routine-time-icon">🌙</div>
+              <div>
+                <h3>Night</h3>
+                <p>Repair &amp; restore while you sleep</p>
+              </div>
+            </div>
+            <ol class="sk-routine-steps">
+              <li><span class="sk-step-num">01</span><div><strong>Remove Makeup</strong><p>Use a gentle micellar water or cleansing balm</p></div></li>
+              <li><span class="sk-step-num">02</span><div><strong>Double Cleanse</strong><p>Follow with a gentle water-based cleanser</p></div></li>
+              <li><span class="sk-step-num">03</span><div><strong>Serum (Optional)</strong><p>Target specific concerns like hydration or texture</p></div></li>
+              <li><span class="sk-step-num">04</span><div><strong>Eye Cream</strong><p>Gently pat around the orbital bone</p></div></li>
+              <li><span class="sk-step-num">05</span><div><strong>Night Moisturiser</strong><p>Use a richer cream to support overnight repair</p></div></li>
+            </ol>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 7. EDUCATIONAL VIDEOS ========== -->
+    <section class="sk-videos-section section-padding" style="background:var(--color-bg-soft)">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Learn More</span>
+          <h2 class="section-title">Helpful Guides &amp; Videos</h2>
+          <p class="section-subtitle">Helpful videos and guides for better skincare habits.</p>
+        </div>
+        <div class="sk-videos-grid" id="videos-grid">
+
+          <a href="https://www.youtube.com/results?search_query=beginner+skincare+routine" target="_blank" rel="noopener noreferrer" class="sk-video-card card-premium">
+            <div class="sk-video-thumb-wrap">
+              <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=600&auto=format&fit=crop&q=80" alt="Beginner Skincare Routine" class="sk-video-thumb" loading="lazy">
+              <div class="sk-video-play-btn" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+              <span class="sk-video-duration">8:24</span>
+            </div>
+            <div class="sk-video-info">
+              <span class="sk-video-category">Skincare Basics</span>
+              <h3>Beginner Skincare Routine</h3>
+              <p class="sk-video-creator">Zivra Beauty Guides</p>
+            </div>
+          </a>
+
+          <a href="https://www.youtube.com/results?search_query=how+to+build+simple+skincare+routine" target="_blank" rel="noopener noreferrer" class="sk-video-card card-premium">
+            <div class="sk-video-thumb-wrap">
+              <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=600&auto=format&fit=crop&q=80" alt="How to Build a Simple Routine" class="sk-video-thumb" loading="lazy">
+              <div class="sk-video-play-btn" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+              <span class="sk-video-duration">6:12</span>
+            </div>
+            <div class="sk-video-info">
+              <span class="sk-video-category">Routines</span>
+              <h3>How to Build a Simple Routine</h3>
+              <p class="sk-video-creator">Zivra Beauty Guides</p>
+            </div>
+          </a>
+
+          <a href="https://www.youtube.com/results?search_query=understanding+skin+types" target="_blank" rel="noopener noreferrer" class="sk-video-card card-premium">
+            <div class="sk-video-thumb-wrap">
+              <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600&auto=format&fit=crop&q=80" alt="Understanding Your Skin Type" class="sk-video-thumb" loading="lazy">
+              <div class="sk-video-play-btn" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+              <span class="sk-video-duration">10:05</span>
+            </div>
+            <div class="sk-video-info">
+              <span class="sk-video-category">Education</span>
+              <h3>Understanding Your Skin Type</h3>
+              <p class="sk-video-creator">Zivra Beauty Guides</p>
+            </div>
+          </a>
+
+          <a href="https://www.youtube.com/results?search_query=daily+sunscreen+basics+skincare" target="_blank" rel="noopener noreferrer" class="sk-video-card card-premium">
+            <div class="sk-video-thumb-wrap">
+              <img src="{% static 'images/suncare.jpg' %}" alt="Daily Sunscreen Basics" class="sk-video-thumb" loading="lazy">
+              <div class="sk-video-play-btn" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+              <span class="sk-video-duration">5:38</span>
+            </div>
+            <div class="sk-video-info">
+              <span class="sk-video-category">Sun Care</span>
+              <h3>Daily Sunscreen Basics</h3>
+              <p class="sk-video-creator">Zivra Beauty Guides</p>
+            </div>
+          </a>
+
+          <a href="https://www.youtube.com/results?search_query=hair+and+scalp+care+basics" target="_blank" rel="noopener noreferrer" class="sk-video-card card-premium">
+            <div class="sk-video-thumb-wrap">
+              <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&auto=format&fit=crop&q=80" alt="Hair and Scalp Care Basics" class="sk-video-thumb" loading="lazy">
+              <div class="sk-video-play-btn" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+              <span class="sk-video-duration">7:50</span>
+            </div>
+            <div class="sk-video-info">
+              <span class="sk-video-category">Hair Care</span>
+              <h3>Hair &amp; Scalp Care Basics</h3>
+              <p class="sk-video-creator">Zivra Beauty Guides</p>
+            </div>
+          </a>
+
+          <a href="https://www.youtube.com/results?search_query=simple+night+skincare+routine" target="_blank" rel="noopener noreferrer" class="sk-video-card card-premium">
+            <div class="sk-video-thumb-wrap">
+              <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=600&auto=format&fit=crop&q=80" alt="Simple Night Routine" class="sk-video-thumb" loading="lazy">
+              <div class="sk-video-play-btn" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+              <span class="sk-video-duration">9:15</span>
+            </div>
+            <div class="sk-video-info">
+              <span class="sk-video-category">Routines</span>
+              <h3>Simple Night Routine</h3>
+              <p class="sk-video-creator">Zivra Beauty Guides</p>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ========== 10. BEAUTY ESSENTIALS ========== -->
+    <section class="sk-products-section section-padding">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Beauty Essentials</span>
+          <h2 class="section-title">Everyday Essentials</h2>
+          <p class="section-subtitle">A curated selection of everyday beauty products to build your routine.</p>
+        </div>
+        <div class="sk-products-grid">
+
+          <div class="sk-product-card card-premium">
+            <div class="sk-product-img-wrap">
+              <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&auto=format&fit=crop&q=80" alt="Gentle Cleanser" class="sk-product-img" loading="lazy">
+            </div>
+            <div class="sk-product-info">
+              <span class="sk-product-category">Cleanser</span>
+              <h3>Gentle Foam Cleanser</h3>
+              <p class="sk-product-price">₹599</p>
+              <a href="#" class="sk-product-btn">View Product</a>
+            </div>
+          </div>
+
+          <div class="sk-product-card card-premium">
+            <div class="sk-product-img-wrap">
+              <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=400&auto=format&fit=crop&q=80" alt="Daily Moisturiser" class="sk-product-img" loading="lazy">
+            </div>
+            <div class="sk-product-info">
+              <span class="sk-product-category">Moisturiser</span>
+              <h3>Hydrating Daily Cream</h3>
+              <p class="sk-product-price">₹849</p>
+              <a href="#" class="sk-product-btn">View Product</a>
+            </div>
+          </div>
+
+          <div class="sk-product-card card-premium">
+            <div class="sk-product-img-wrap">
+              <img src="{% static 'images/suncare.jpg' %}" alt="Sunscreen SPF 50" class="sk-product-img" loading="lazy">
+            </div>
+            <div class="sk-product-info">
+              <span class="sk-product-category">Sunscreen</span>
+              <h3>SPF 50 Sunscreen PA+++</h3>
+              <p class="sk-product-price">₹699</p>
+              <a href="#" class="sk-product-btn">View Product</a>
+            </div>
+          </div>
+
+          <div class="sk-product-card card-premium">
+            <div class="sk-product-img-wrap">
+              <img src="https://images.unsplash.com/photo-1617897903246-719242758050?w=400&auto=format&fit=crop&q=80" alt="Lip Balm" class="sk-product-img" loading="lazy">
+            </div>
+            <div class="sk-product-info">
+              <span class="sk-product-category">Lip Care</span>
+              <h3>Nourishing Lip Balm</h3>
+              <p class="sk-product-price">₹199</p>
+              <a href="#" class="sk-product-btn">View Product</a>
+            </div>
+          </div>
+
+          <div class="sk-product-card card-premium">
+            <div class="sk-product-img-wrap">
+              <img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=400&auto=format&fit=crop&q=80" alt="Hair Serum" class="sk-product-img" loading="lazy">
+            </div>
+            <div class="sk-product-info">
+              <span class="sk-product-category">Hair Serum</span>
+              <h3>Frizz Control Hair Serum</h3>
+              <p class="sk-product-price">₹449</p>
+              <a href="#" class="sk-product-btn">View Product</a>
+            </div>
+          </div>
+
+          <div class="sk-product-card card-premium">
+            <div class="sk-product-img-wrap">
+              <img src="https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=400&auto=format&fit=crop&q=80" alt="Hydrating Shampoo" class="sk-product-img" loading="lazy">
+            </div>
+            <div class="sk-product-info">
+              <span class="sk-product-category">Shampoo</span>
+              <h3>Gentle Hydrating Shampoo</h3>
+              <p class="sk-product-price">₹349</p>
+              <a href="#" class="sk-product-btn">View Product</a>
+            </div>
+          </div>
+
+          <div class="sk-product-card card-premium">
+            <div class="sk-product-img-wrap">
+              <img src="https://images.unsplash.com/photo-1585421514738-01798e348b17?w=400&auto=format&fit=crop&q=80" alt="Deep Conditioner" class="sk-product-img" loading="lazy">
+            </div>
+            <div class="sk-product-info">
+              <span class="sk-product-category">Conditioner</span>
+              <h3>Repair &amp; Restore Conditioner</h3>
+              <p class="sk-product-price">₹399</p>
+              <a href="#" class="sk-product-btn">View Product</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 11. DISCLAIMER ========== -->
+    <section class="sk-disclaimer-section">
+      <div class="container">
+        <div class="sk-disclaimer-box">
+          <svg class="sk-disclaimer-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <p><strong>Educational Note:</strong> Beauty &amp; skincare information on Zivra is provided for general educational purposes and is not a medical diagnosis or a substitute for professional advice. Always consult a qualified dermatologist or healthcare provider for personalised guidance.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+{% include "ai_chat.html" %}
+  {% include "footer.html" %}
+  <!-- Scripts -->
+  <script src="{% static 'js/home.js' %}" defer></script>
+  <script src="{% static 'js/ai-chat.js' %}" defer></script>
+  <script src="{% static 'js/community.js' %}"></script>
+  <script src="{% static 'js/ai-review.js' %}"></script>
+  <script src="{% static 'js/skincare.js' %}"></script>
+
+</body>
+</html>

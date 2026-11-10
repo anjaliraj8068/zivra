@@ -1,0 +1,264 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact & Feedback – Zivra | We'd Love to Hear From You</title>
+  <meta name="description" content="Have a question, feedback, or experience to share? Get in touch with the Zivra team. We'd love to hear from you.">
+
+  <!-- Stylesheets -->
+ <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'css/contact.css' %}">
+  <link rel="stylesheet" href="{% static 'css/home.css' %}">
+  
+</head>
+<body>
+{% include "header.html" %}
+  <main class="ct-main">
+
+    <!-- HERO -->
+    <section class="ct-hero" aria-label="Contact Hero">
+      <div class="ct-hero-bg" aria-hidden="true"></div>
+      <div class="container ct-hero-inner">
+        <span class="section-badge">Contact &amp; Feedback</span>
+        <h1 class="ct-hero-title">We'd Love to Hear<br><em>From You</em></h1>
+        <p class="ct-hero-subtitle">Have a question, feedback, or an experience you'd like to share?<br>Tell us how we can make Zivra better.</p>
+      </div>
+    </section>
+
+    <!-- TWO-COLUMN CONTENT -->
+    <section class="ct-content-section">
+      <div class="container ct-grid">
+
+        <!-- ===== LEFT: Get in Touch Info ===== -->
+        <aside class="ct-info-col">
+
+          <div class="ct-info-card card-premium">
+            <h2 class="ct-info-heading">Let's Connect</h2>
+            <!-- <p class="ct-info-intro">We're always happy to help. Choose the type of message that fits your need.</p> -->
+
+            <ul class="ct-reasons-list">
+              <li class="ct-reason-item">
+                <div class="ct-reason-icon">💬</div>
+                <div class="ct-reason-text">
+                  <strong>Questions</strong>
+                  <span>Need help understanding something?</span>
+                </div>
+              </li>
+              <!-- <li class="ct-reason-item">
+                <div class="ct-reason-icon">💡</div>
+                <div class="ct-reason-text">
+                  <strong>Suggestions</strong>
+                  <span>Have an idea that could improve Zivra?</span>
+                </div>
+              </li> -->
+              <li class="ct-reason-item">
+                <div class="ct-reason-icon">🐛</div>
+                <div class="ct-reason-text">
+                  <strong>Report an Issue</strong>
+                  <span>Found something that isn't working correctly?</span>
+                </div>
+              </li>
+              <li class="ct-reason-item">
+                <div class="ct-reason-icon">❤️</div>
+                <div class="ct-reason-text">
+                  <strong>Share Your Experience</strong>
+                  <span>Tell us what you think about Zivra.</span>
+                </div>
+              </li>
+            </ul>
+
+            <!-- Response time -->
+            <div class="ct-response-box glass">
+              <div class="ct-response-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div>
+                <strong>Response Time</strong>
+                <p>We usually respond within 24–48 hours.</p>
+              </div>
+            </div>
+
+            <!-- Decorative fashion image -->
+            <!-- <div class="ct-deco-img-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600&auto=format&fit=crop&q=80"
+                alt="Fashion editorial illustration"
+                class="ct-deco-img"
+                loading="lazy"
+              >
+              <div class="ct-deco-overlay glass">
+                <span>✨ Fashion is self-expression — so is your feedback.</span>
+              </div>
+            </div> -->
+
+            <!-- Contact methods -->
+            <div class="ct-direct-links">
+              <a href="mailto:hello@zivra.app" class="ct-direct-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                hello@zivra.app
+              </a>
+              <a href="https://instagram.com/zivra" target="_blank" rel="noopener" class="ct-direct-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                @zivra
+              </a>
+            </div>
+          </div>
+
+        </aside>
+
+        <!-- ===== RIGHT: Contact Form ===== -->
+        <div class="ct-form-col">
+
+          <!-- DEFAULT FORM STATE -->
+          <div class="ct-form-card glass" id="ct-form-card">
+            <div class="ct-form-header">
+              <h2 class="ct-form-title">Send Us a Message</h2>
+              <p class="ct-form-subtitle">Your feedback helps us improve Zivra.</p>
+            </div>
+
+           <form class="ct-form" id="ct-contact-form" method="POST" action="{% url 'submit_contact' %}" novalidate>
+    {% csrf_token %}
+
+              <!-- Row: Name + Email -->
+              <div class="ct-form-row">
+                <div class="ct-field-group" id="fg-name">
+                  <label class="ct-label" for="ct-name">Full Name <span class="ct-required">*</span></label>
+                  <div class="ct-input-wrap">
+                    <svg class="ct-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    <input
+                      name="name"
+                      type="text"
+                      id="ct-name"
+                      class="ct-input"
+                      placeholder="Enter your full name"
+                      autocomplete="name"
+                      required
+                    >
+                  </div>
+                  <span class="ct-field-error" id="err-name">Please enter your full name.</span>
+                </div>
+
+                <div class="ct-field-group" id="fg-email">
+                  <label class="ct-label" for="ct-email">Email Address <span class="ct-required">*</span></label>
+                  <div class="ct-input-wrap">
+                    <svg class="ct-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <input
+                    name="email"
+                      type="email"
+                      id="ct-email"
+                      class="ct-input"
+                      placeholder="you@example.com"
+                      autocomplete="email"
+                      required
+                    >
+                  </div>
+                  <span class="ct-field-error" id="err-email">Please enter a valid email address.</span>
+                </div>
+              </div>
+
+              <!-- Row: Purpose + Subject -->
+              <div class="ct-form-row">
+                <div class="ct-field-group" id="fg-purpose">
+                  <label class="ct-label" for="ct-purpose">Purpose <span class="ct-required">*</span></label>
+                  <div class="ct-input-wrap ct-select-wrap">
+                    <svg class="ct-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    <select id="ct-purpose" name="purpose" class="ct-input ct-select" required>
+                      <option value="" disabled selected>Select a purpose...</option>
+                      <option value="general">General Question</option>
+                      <option value="feedback">Feedback</option>
+                      <option value="bug">Report a Problem</option>
+                      <option value="feature">Feature Suggestion</option>
+                      <option value="account">Account Issue</option>
+                      <option value="shopping">Shopping / Product Question</option>
+                      <option value="community">Community Issue</option>
+                      <option value="ai">AI Review Issue</option>
+                      <option value="other">Other</option>
+                    </select>
+                    <svg class="ct-select-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                  </div>
+                  <span class="ct-field-error" id="err-purpose">Please select a purpose.</span>
+                </div>
+
+                <div class="ct-field-group" id="fg-subject">
+                  <label class="ct-label" for="ct-subject">Subject</label>
+                  <div class="ct-input-wrap">
+                    <svg class="ct-field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                    <input
+                    name="subject"
+                      type="text"
+                      id="ct-subject"
+                      class="ct-input"
+                      placeholder="Briefly describe your query"
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <!-- Description -->
+              <div class="ct-field-group" id="fg-description">
+                <label class="ct-label" for="ct-description">
+                  Description <span class="ct-required">*</span>
+                  <span class="ct-char-count" id="desc-count">0 / 1000</span>
+                </label>
+                <textarea
+                name="description"
+                  id="ct-description"
+                  class="ct-input ct-textarea"
+                  placeholder="Tell us about your question, experience, problem, or suggestion..."
+                  maxlength="1000"
+                  rows="5"
+                  required
+                ></textarea>
+                <span class="ct-field-error" id="err-description">Please describe your query (min. 20 characters).</span>
+              </div>
+              <!-- Submit Row -->
+              <div class="ct-submit-row">
+                <button type="submit" class="btn-primary ct-submit-btn" id="ct-submit-btn">
+                  <span class="ct-btn-label">Send Message</span>
+                  <span class="ct-btn-spinner" aria-hidden="true"></span>
+                </button>
+                <button type="button" class="btn-secondary ct-clear-btn" id="ct-clear-btn">
+                  Clear Form
+                </button>
+              </div>
+
+              <p class="ct-disclaimer">
+                By submitting this form, you agree to be contacted regarding your request.
+              </p>
+
+            </form>
+          </div><!-- /ct-form-card -->
+
+          <!-- SUCCESS STATE (hidden initially) -->
+          <div class="ct-success-card glass" id="ct-success-card" style="display:none;" role="alert" aria-live="polite">
+            <div class="ct-success-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <h2 class="ct-success-title">Message Sent Successfully!</h2>
+            <p class="ct-success-body">Thank you for reaching out to Zivra. We've received your message and will get back to you within 24–48 hours.</p>
+            <button class="btn-primary ct-another-btn" id="ct-another-btn">
+              Send Another Message
+            </button>
+          </div>
+
+        </div><!-- /ct-form-col -->
+
+      </div><!-- /ct-grid -->
+    </section>
+
+  </main>
+
+{% include "ai_chat.html" %}
+  {% include "footer.html" %}
+  <!-- Scripts -->
+  <script src="{% static 'js/home.js' %}" defer></script>
+  <script src="{% static 'js/ai-chat.js' %}" defer></script>
+  <script src="{% static 'js/community.js' %}"></script>
+  <script src="{% static 'js/ai-review.js' %}"></script>
+  <script src="{% static 'js/contact.js' %}"></script>
+
+  <script src="js/contact.js" defer></script>
+</body>
+</html>
